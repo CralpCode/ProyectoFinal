@@ -5,6 +5,7 @@
 package com.juegos.proyectofinal.UI;
 
 import Binarios.SerializarObjeto;
+import Juegos.*;
 import Generadores.Boton;
 import Generadores.Tablero;
 import java.io.Serializable;
@@ -27,6 +28,9 @@ public class Interme extends javax.swing.JFrame implements Serializable{
     public static int turnos = 1;
     public static int muerte1 = 0;
     public static int muerte2 = 0;
+    public static String Etiqueta1= "";
+    public static String Etiqueta2 = "";
+
 
     //noseee nuevpane;
     Tablero nuevopan;
@@ -57,7 +61,7 @@ public class Interme extends javax.swing.JFrame implements Serializable{
         setBounds(new java.awt.Rectangle(200, 100, 800, 600));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Turno 1 jugador 1");
+        jLabel1.setText("Turno 1 Jugador 1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Piezas comidas por  el Jugador 2");
@@ -203,11 +207,11 @@ public class Interme extends javax.swing.JFrame implements Serializable{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel4;
+    public static javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables

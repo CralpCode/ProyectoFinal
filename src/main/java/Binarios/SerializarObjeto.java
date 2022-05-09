@@ -6,9 +6,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-/**
- * @author BS
- */
 public class SerializarObjeto {
 
     public static boolean serializarObjeto(String direccionArchivo, Serializable objeto) {
