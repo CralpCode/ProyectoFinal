@@ -5,7 +5,7 @@
 package com.juegos.proyectofinal.UI;
 
 import Binarios.SerializarObjeto;
-import Juegos.*;
+import Acciones.*;
 import Generadores.Boton;
 import Generadores.Tablero;
 import java.io.Serializable;
@@ -61,7 +61,7 @@ public class Interme extends javax.swing.JFrame implements Serializable{
         setBounds(new java.awt.Rectangle(200, 100, 800, 600));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Turno 1 Jugador 1");
+        jLabel1.setText("Turno "+ turnos +" Jugador " + BotonAccion.Jug);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Piezas comidas por  el Jugador 2");
@@ -120,7 +120,6 @@ public class Interme extends javax.swing.JFrame implements Serializable{
                             .addComponent(jLabel2))
                         .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addGap(42, 42, 42))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -188,7 +187,10 @@ public class Interme extends javax.swing.JFrame implements Serializable{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        
+        turnos = 1;
+        muerte1 =0;
+        muerte2 =0;
+        BotonAccion.Jug =1;
         new Ventana().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed

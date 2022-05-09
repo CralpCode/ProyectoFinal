@@ -5,6 +5,7 @@
 package Usuarios;
 
 import com.juegos.proyectofinal.UI.JuegosImplem;
+import com.juegos.proyectofinal.UI.Jugadores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,7 @@ public class BtnActo implements ActionListener {
                    CrearUsuarios.contador =i;
                    System.out.println("Valro contador " + CrearUsuarios.contador);
                    System.out.println("Valor de Boton" + CrearUsuarios.UsuGuard[CrearUsuarios.contador]);
+                   Jugadores.nuevUsuCarg.setVisible(false);
                    new JuegosImplem().setVisible(true);
             }
         }

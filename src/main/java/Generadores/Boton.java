@@ -4,10 +4,12 @@
  */
 package Generadores;
 
+import Acciones.BotonAccion;
 import Binarios.SerializarObjeto;
 import Juegos.JDamas;
 import Usuarios.CrearUsuarios;
 import Usuarios.GuardBtns;
+import com.juegos.proyectofinal.UI.Interme;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -59,6 +61,13 @@ public class Boton extends javax.swing.JFrame implements Serializable{
         if(tmpBtns != null){
             for(int i = 0; i<12; i++){
                 
+           Interme.turnos = tmpBtns.getRetomaturno();
+           BotonAccion.Jug = tmpBtns.getRetomaJug();
+           Interme.jLabel1.setText("Turno " + Interme.turnos + " del jugador " + BotonAccion.Jug);
+           Interme.muerte1 = tmpBtns.getRetomamuerte1();
+           Interme.muerte2 = tmpBtns.getRetomamuerte2();
+           Interme.jLabel5.setText(" "+Interme.muerte1);
+           Interme.jLabel4.setText(" "+Interme.muerte2);
            Botonesant = tmpBtns.getBotonesGuar()[i];   
            Jugador1[i] = Botonesant;
            Jugador1[i].getBounds();
@@ -214,6 +223,7 @@ public class Boton extends javax.swing.JFrame implements Serializable{
        
         new CrearUsuarios().GuardUsBtn();
         System.out.println("Se guradooooo");
+        System.out.println("Valor del turno" + Interme.turnos);
     }
     
     public JButton[] getJugador1() {

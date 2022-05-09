@@ -79,7 +79,7 @@ public class CrearUsuarios extends javax.swing.JPanel implements Serializable{
         for (int i = 1; i <= valor; i++) {
             Botones[i] = new JButton();
             Botonera[i]= Botones[i];
-            Botones[i].setBounds(i*100,i*100, 100, 40);
+            Botones[i].setBounds(150,i*30, 200, 20);
             Botones[i].setText(i + " Jugador " + UsuGuard[i]);
             Botones[i].setVisible(true);
             

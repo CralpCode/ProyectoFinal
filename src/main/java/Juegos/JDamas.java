@@ -118,7 +118,7 @@ public class JDamas implements Serializable{
                     Interme.jLabel1.setText("Turno " + Interme.turnos + " del jugador 1"); 
                     Interme.muerte1 = Interme.muerte1 + 1;
                     Interme.jLabel5.setLocation(500,90);
-                    Interme.jLabel5.setText(" "+Interme.muerte2);
+                    Interme.jLabel5.setText(" "+Interme.muerte1);
                     solouno = true;
                 }
                 if(Btn.getX()-50 == Boton.Jugador2[i].getX() && Btn.getY()+50 == Boton.Jugador2[i].getY() && valorx+50 == (Boton.Jugador2[i].getX()) && valory-50 == (Boton.Jugador2[i].getY())&& solouno == false){
@@ -131,7 +131,7 @@ public class JDamas implements Serializable{
                     Interme.jLabel1.setText("Turno " + Interme.turnos + " del jugador 1"); 
                     Interme.muerte1 = Interme.muerte1 + 1;
                     Interme.jLabel5.setLocation(500,90);
-                    Interme.jLabel5.setText(" "+Interme.muerte2);
+                    Interme.jLabel5.setText(" "+Interme.muerte1);
                     solouno =true;
                 }
             }

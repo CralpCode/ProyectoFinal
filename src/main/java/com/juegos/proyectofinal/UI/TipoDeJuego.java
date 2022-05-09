@@ -12,11 +12,13 @@ public class TipoDeJuego extends javax.swing.JFrame {
 
     /**
      * Creates new form TipoDeJuego
-     * @param numero
      */
+    public static boolean salida = false;
     public TipoDeJuego(int numero) {
         initComponents();
         IniciarTipo(numero);
+        
+        
     }
 
     /**
@@ -59,6 +61,9 @@ public class TipoDeJuego extends javax.swing.JFrame {
        NuevoHanoi.setLocation(100, 50);   
        this.getContentPane().add(NuevoHanoi);
       }
+  }
+  private void salir(){
+     this.setVisible(false);
   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

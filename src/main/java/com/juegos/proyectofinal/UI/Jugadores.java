@@ -18,6 +18,7 @@ public class Jugadores extends javax.swing.JFrame {
      * Creates new form Jugadores
      */
     public static boolean valor = false;
+    public static ListadeUsuarios nuevUsuCarg;
     CrearJg panelini = new CrearJg();
     public Jugadores() {
         valor = false;
@@ -110,8 +111,9 @@ public class Jugadores extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        this.setVisible(false);
        valor=true;
+       nuevUsuCarg = new ListadeUsuarios();
+       nuevUsuCarg.setVisible(true);
        
-       new ListadeUsuarios().setVisible(true);
        
       // JuegosImplem.intermedio.Btns.CargarBotns();
        

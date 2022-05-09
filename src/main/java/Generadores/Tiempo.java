@@ -8,6 +8,6 @@ package Generadores;
  *
  * @author calin
  */
-public class Tirmpo {
+public class Tiempo {
     
 }

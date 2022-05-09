@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 public class BotonAccion implements ActionListener  {
   public static JButton BotonPres;  
-  public static int Jug; 
+  public static int Jug =1; 
    
   
     
