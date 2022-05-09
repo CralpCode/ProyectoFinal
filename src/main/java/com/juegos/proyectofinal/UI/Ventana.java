@@ -4,6 +4,8 @@
  */
 package com.juegos.proyectofinal.UI;
 
+import Reportes.DatosRaporte;
+
 /**
  *
  * @author calin
@@ -48,6 +50,11 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         jButton2.setText("Reportes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +109,11 @@ public class Ventana extends javax.swing.JFrame {
         new Jugadores().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        new DatosRaporte().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
    
