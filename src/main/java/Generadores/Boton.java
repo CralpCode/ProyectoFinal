@@ -48,7 +48,7 @@ public class Boton extends javax.swing.JFrame implements Serializable{
             System.out.println("Cargandoo***********");
         System.out.println("Valro contador " + CrearUsuarios.contador);
         System.out.println("Nombre matriz " + CrearUsuarios.UsuGuard[CrearUsuarios.contador]);
-        GuardBtns tmpBtns = SerializarObjeto.deserializarObjeto(CrearUsuarios.UsuGuard[CrearUsuarios.contador]+".txt", GuardBtns.class);
+        GuardBtns tmpBtns = SerializarObjeto.deserializarObjeto(CrearUsuarios.UsuGuard[CrearUsuarios.contador]+".bin", GuardBtns.class);
         
         System.out.println("retorno" + tmpBtns);
         

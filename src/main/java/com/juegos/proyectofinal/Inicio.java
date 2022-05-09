@@ -6,12 +6,15 @@ package com.juegos.proyectofinal;
 
 import com.juegos.proyectofinal.UI.Ventana;
 
+
 /**
  *
  * @author calin
  */
 public class Inicio {
+
     public static void main(String[] args) {
+       
         new Ventana().setVisible(true);
     }
 }

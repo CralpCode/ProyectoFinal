@@ -69,11 +69,17 @@ public class TiposHanoi extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JuegosImplem.Juegonuev2.setVisible(false);    
+        Hanoi.Habilitar = false;
         new Hanoi().setVisible(true);
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        JuegosImplem.Juegonuev2.setVisible(false); 
+        Hanoi.Habilitar = true;
+        new Hanoi().setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

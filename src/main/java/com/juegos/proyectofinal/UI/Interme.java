@@ -7,6 +7,7 @@ package com.juegos.proyectofinal.UI;
 import Binarios.SerializarObjeto;
 import Acciones.*;
 import Generadores.Boton;
+import Generadores.GenerarTiempo;
 import Generadores.Tablero;
 import java.io.Serializable;
 import javax.swing.JButton;
@@ -36,6 +37,10 @@ public class Interme extends javax.swing.JFrame implements Serializable{
     Tablero nuevopan;
     public Interme() {
         initComponents();
+        GenerarTiempo tiemponuevo = new GenerarTiempo();
+        tiemponuevo.setSize(75,38);
+        tiemponuevo.setLocation(200,0);
+        this.getContentPane().add(tiemponuevo);
     }
 
     /**

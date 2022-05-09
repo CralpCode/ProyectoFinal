@@ -36,7 +36,7 @@ public class GuardBtns implements Serializable{
                 retomamuerte1 = Interme.muerte1;
                 retomamuerte2 = Interme.muerte2;
         }
-        SerializarObjeto.serializarObjeto(CrearUsuarios.UsuGuard[CrearUsuarios.valor]+".txt", this);
+        SerializarObjeto.serializarObjeto(CrearUsuarios.UsuGuard[CrearUsuarios.valor]+".bin", this);
     }
 
     public JButton[] getBotonesGuar() {

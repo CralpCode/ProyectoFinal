@@ -6,6 +6,11 @@ package com.juegos.proyectofinal.UI;
 
 import Acciones.Nodo;
 import Acciones.Pila;
+import Binarios.SerializarObjeto;
+import Generadores.GenerarTiempo;
+import Usuarios.CrearUsuarios;
+import Usuarios.GuardBtns;
+import java.io.Serializable;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -15,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author calin
  */
-public class Hanoi extends javax.swing.JFrame {
+public class Hanoi extends javax.swing.JFrame implements Serializable{
 
     /**
      * Creates new form Principal
@@ -33,9 +38,21 @@ public class Hanoi extends javax.swing.JFrame {
     double NumMinMov = 0;
     
     boolean stop = false;
+    public static boolean Habilitar ;
     
     public Hanoi() {
         initComponents();
+        
+        BtnGuardar.setEnabled(true);
+        GenerarTiempo tiemponuevo = new GenerarTiempo();
+        tiemponuevo.setSize(75,38);
+        tiemponuevo.setLocation(5,5);
+        this.getContentPane().add(tiemponuevo);
+        
+        BtnGuardar.setVisible(false);
+        Btnvolver.setVisible(false);
+        
+        BtnResolver.setEnabled(Habilitar);
         
         ModeloTA = (DefaultTableModel) TorreA.getModel();
         ModeloTA.setRowCount(10);
@@ -87,6 +104,10 @@ public class Hanoi extends javax.swing.JFrame {
         BtnIniciar = new javax.swing.JButton();
         BtnResolver = new javax.swing.JButton();
         BtnRendirse = new javax.swing.JButton();
+        Btnvolver = new javax.swing.JButton();
+        BtnGuardar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -241,69 +262,100 @@ public class Hanoi extends javax.swing.JFrame {
             }
         });
 
+        Btnvolver.setText("Volver al menu");
+        Btnvolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnvolverActionPerformed(evt);
+            }
+        });
+
+        BtnGuardar.setText("Guardar");
+        BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGuardarActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Opciones");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(BtnAB, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(BtnAB, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addGap(84, 84, 84)
+                                                    .addComponent(BtnBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BtnBC, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(56, 56, 56)
+                                                    .addComponent(jLabel1)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(BtnRendirse)
+                                                .addComponent(jLabel2))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(BtnIniciar))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(BtnAC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGap(84, 84, 84)
-                                            .addComponent(BtnBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BtnBC, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(56, 56, 56)
-                                            .addComponent(jLabel1)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(BtnRendirse)
-                                        .addComponent(jLabel2))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(BtnIniciar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BtnAC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(40, 40, 40)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(BtnCA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(BtnCA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(BtnCB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(NumDiscos, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BtnCB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(BtnResolver)
+                                        .addGap(19, 19, 19))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(NumDiscos, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtnResolver)
-                                .addGap(19, 19, 19))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel3)
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MinMv, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NumMv, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(72, 72, 72)
+                                .addComponent(jLabel3)
+                                .addGap(81, 81, 81)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(MinMv, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NumMv, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(BtnGuardar)
+                    .addComponent(Btnvolver))
                 .addGap(0, 97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addComponent(Btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(BtnGuardar)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,7 +380,7 @@ public class Hanoi extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NumMv, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnResolver)
                     .addComponent(BtnIniciar)
@@ -401,8 +453,10 @@ public class Hanoi extends javax.swing.JFrame {
                 
                 CantMov();
                 
-                if(PilaTorreC.getContNodo() == objetivo && ContNumMov != NumMinMov){
+                if(PilaTorreC.getContNodo() == objetivo && ContNumMov != NumMinMov || PilaTorreC.getContNodo() == objetivo && ContNumMov == NumMinMov){
                     JOptionPane.showMessageDialog(null,"Felicidades Ganaste", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    new Ventana().setVisible(true);
                 }
                 
             }
@@ -451,7 +505,8 @@ public class Hanoi extends javax.swing.JFrame {
             stop = false;
             
             ResolverHanoi(objetivo, PilaTorreA, PilaTorreB, PilaTorreC);
-            
+            this.setVisible(false);
+            new Ventana().setVisible(true);
         }
 
     }//GEN-LAST:event_BtnResolverActionPerformed
@@ -460,6 +515,21 @@ public class Hanoi extends javax.swing.JFrame {
         this.setVisible(false);
         new Ventana().setVisible(true);
     }//GEN-LAST:event_BtnRendirseActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+       Btnvolver.setVisible(true);
+       BtnGuardar.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void BtnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnvolverActionPerformed
+        this.setVisible(false);
+        new Ventana().setVisible(true);
+    }//GEN-LAST:event_BtnvolverActionPerformed
+
+    private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
+       guardar();
+       BtnGuardar.setEnabled(false);
+    }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void iniciar(){
         
@@ -632,7 +702,7 @@ public class Hanoi extends javax.swing.JFrame {
             
             JDialog dialog = pane.createDialog("Numero de pasos");
             
-            dialog.setLocation(400, 200);
+            dialog.setLocation(600, 200);
             dialog.setVisible(true);
             
             int option = (int ) pane.getValue();
@@ -660,6 +730,21 @@ public class Hanoi extends javax.swing.JFrame {
         
     }
     
+    private void guardar(){
+    
+        SerializarObjeto.serializarObjeto(CrearUsuarios.UsuGuard[CrearUsuarios.valor]+".bin", this);
+    
+    }
+    
+    private void Cargar(){
+    
+        Hanoi tmpBtns = SerializarObjeto.deserializarObjeto(CrearUsuarios.UsuGuard[CrearUsuarios.contador]+".bin", Hanoi.class);
+        
+        
+        
+    
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAB;
     private javax.swing.JButton BtnAC;
@@ -667,9 +752,11 @@ public class Hanoi extends javax.swing.JFrame {
     private javax.swing.JButton BtnBC;
     private javax.swing.JButton BtnCA;
     private javax.swing.JButton BtnCB;
+    private javax.swing.JButton BtnGuardar;
     private javax.swing.JButton BtnIniciar;
     private javax.swing.JButton BtnRendirse;
     private javax.swing.JButton BtnResolver;
+    private javax.swing.JButton Btnvolver;
     private javax.swing.JLabel MinMv;
     private javax.swing.JComboBox<String> NumDiscos;
     private javax.swing.JLabel NumMv;
@@ -679,8 +766,15 @@ public class Hanoi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
+
+    public void setHabilitar(boolean Habilitar) {
+        this.Habilitar = Habilitar;
+    }
+    
 }
